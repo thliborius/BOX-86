@@ -1,13 +1,4 @@
-import type {Level} from './game';
-export const levels:Level[] = [
- ['Erste Schicht', ['#######','#     #','# @$ .#','#     #','#######']],
- ['Um die Ecke', ['######','#   .#','#  $ #','# @  #','######']],
- ['Doppelte Fracht', ['########','#      #','# .$$. #','#  @   #','#      #','########']],
- ['Zwei Gänge', ['########','# .  . #','# $  $ #','#   #  #','# @    #','########']],
- ['Zwischenlager', ['########','#  .   #','#  $   #','# # #  #','# $ @. #','#      #','########']],
- ['Gegenverkehr', ['########','# .  . #','#      #','# $$   #','#   @  #','########']],
- ['Dreierpack', ['########','# . . .#','# $ $ $#','#      #','#  @   #','########']],
- ['Säulenhalle', ['#########','# .   . #','# $ # $ #','#   #   #','# $   @ #','# .     #','#########']],
- ['Rangierhof', ['########','# . . .#','#      #','# $$$  #','#  @   #','#      #','########']],
- ['Feierabend', ['#########','# . . . #','#       #','# $$ $  #','#   #   #','#   @   #','#########']]
-].map(([name,rows],i)=>({id:`box86-${String(i+1).padStart(3,'0')}`,name:name as string,map:(rows as string[]).join('\n')}));
+import type { Level } from "./game";
+import collection from "./levels.json";
+// Frozen data only. Generator, solver, and quality reports are development tools.
+export const levels: Level[] = collection;

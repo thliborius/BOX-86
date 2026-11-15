@@ -1,0 +1,572 @@
+[
+  {
+    "kind": "handcrafted",
+    "name": "Um die Säule"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Die kleine Kurve"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Hinter der Ecke"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Nicht an die Wand"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Kleine Ausweichspur"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Der Querträger"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Seitenwechsel"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Versetzte Buchten"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Vor dem Tor"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Zwei Lieferungen"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Die Durchfahrt"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Zwei Nischen"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Ziel im Winkel"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Drei Plätze"
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Ende der Frühschicht"
+  },
+  {
+    "kind": "generated",
+    "name": "Schmale Gasse",
+    "seed": 876872,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Nebenraum",
+    "seed": 876660,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Lagerwinkel",
+    "seed": 875180,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Doppelbogen",
+    "seed": 876324,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Erster Umweg",
+    "seed": 870888,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Am Pfeiler",
+    "seed": 876957,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Zwischen den Toren",
+    "seed": 872428,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Linke Bucht",
+    "seed": 877056,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Kleine Kreuzung",
+    "seed": 870856,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Über Eck",
+    "seed": 877800,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Im Seitenflügel",
+    "seed": 877268,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Torfahrt",
+    "seed": 873629,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Hinterhof",
+    "seed": 873737,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Auf dem Absatz",
+    "seed": 874884,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Letzter Stellplatz",
+    "seed": 876261,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Kurze Schleife",
+    "seed": 878818,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Alte Werkstatt",
+    "seed": 871677,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Laderampe",
+    "seed": 874776,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Im Quergang",
+    "seed": 877190,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Kistenkarussell",
+    "seed": 878109,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Verbindungsweg",
+    "seed": 872281,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Dritte Tür",
+    "seed": 876118,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Der Innenhof",
+    "seed": 871169,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Rangierpause",
+    "seed": 871173,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "An der Mauer",
+    "seed": 871824,
+    "boxes": 2
+  },
+  {
+    "kind": "generated",
+    "name": "Zwei Zugänge",
+    "seed": 876549,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Abstellnische",
+    "seed": 875413,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Freie Bahn",
+    "seed": 870486,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Umladestation",
+    "seed": 876527,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Langes Wochenende",
+    "seed": 875733,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Später Eingang",
+    "seed": 876589,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Säulengang",
+    "seed": 875611,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Frachtwechsel",
+    "seed": 876462,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Platz zum Wenden",
+    "seed": 873729,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Gleiswechsel",
+    "seed": 871859,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Lagerschleife",
+    "seed": 871591,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Kreuzverkehr",
+    "seed": 870182,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Nordflügel",
+    "seed": 873719,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Südbucht",
+    "seed": 872257,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Zwischenstopp",
+    "seed": 877970,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Um die Insel",
+    "seed": 873223,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Das Scharnier",
+    "seed": 870063,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Enge Kurve",
+    "seed": 871083,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Warteschlange",
+    "seed": 871215,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Hofdienst",
+    "seed": 876070,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Offene Hintertür",
+    "seed": 876958,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Auf Umwegen",
+    "seed": 876482,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Der Knoten",
+    "seed": 878274,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Lückenfüller",
+    "seed": 872681,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Versandbereit",
+    "seed": 876795,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Gegenrichtung",
+    "seed": 872635,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Schlüsselstelle",
+    "seed": 877514,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Schichtwechsel",
+    "seed": 878182,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Blockade lösen",
+    "seed": 874382,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Rückwärtiges Tor",
+    "seed": 874022,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Alte Schlosserei",
+    "seed": 875102,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Zwischen zwei Wänden",
+    "seed": 870223,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Doppelter Umlauf",
+    "seed": 877963,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Die Zwischenablage",
+    "seed": 873639,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Hinter dem Pfeiler",
+    "seed": 877858,
+    "boxes": 4
+  },
+  {
+    "kind": "generated",
+    "name": "Zentrale Ablage",
+    "seed": 871283,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Vor der Ausfahrt",
+    "seed": 874583,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Verpackungsraum",
+    "seed": 874179,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Drei Zufahrten",
+    "seed": 872719,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Der Wendepunkt",
+    "seed": 874715,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Untere Etage",
+    "seed": 877675,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Große Sortierung",
+    "seed": 871115,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Die letzte Nische",
+    "seed": 877217,
+    "boxes": 3
+  },
+  {
+    "kind": "generated",
+    "name": "Im Gegenbogen",
+    "seed": 873059,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Sorgfältig stapeln",
+    "seed": 872915,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Späte Lieferung",
+    "seed": 873075,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Letzte Runde",
+    "seed": 873643,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Zwischen den Reihen",
+    "seed": 878311,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Tor nach Westen",
+    "seed": 873027,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Kleine Meisterprobe",
+    "seed": 877499,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Kistenwechsel",
+    "seed": 870599,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Die Schaltstelle",
+    "seed": 872219,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Am Engpass",
+    "seed": 877087,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Freie Hinterhand",
+    "seed": 878039,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Schlusslieferung",
+    "seed": 876155,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Vor dem Feierabend",
+    "seed": 873703,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Letzte Durchfahrt",
+    "seed": 871847,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Auslagerung",
+    "seed": 872775,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Nachtschicht",
+    "seed": 871415,
+    "boxes": 5
+  },
+  {
+    "kind": "generated",
+    "name": "Alles verstaut",
+    "seed": 878475,
+    "boxes": 5
+  }
+]

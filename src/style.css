@@ -386,7 +386,8 @@ h2 {
   font-size: 15px;
   line-height: 1.2;
   margin-top: 3px;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .levels b {
   position: absolute;
@@ -538,7 +539,7 @@ body:has(#scanlines:checked)::after {
     right: 10px;
   }
   main {
-    padding: 24px 12px 16px;
+    padding: 24px 9px 16px;
   }
   .intro {
     display: block;
@@ -661,4 +662,62 @@ body:has(#scanlines:checked)::after {
     outline: 3px solid Highlight;
     outline-offset: -3px;
   }
+}
+
+/* Ten directly selectable rooms per group keep the catalogue compact on phones. */
+.level-pages {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--cyan);
+  font-size: 20px;
+}
+.level-pages button {
+  min-width: 48px;
+  padding: 8px 12px;
+}
+.level-pages select {
+  font: inherit;
+  color: var(--white);
+  background: var(--black);
+  border: 2px solid var(--cyan);
+  min-height: 44px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.level-pages select:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: default;
+  color: var(--cyan);
+}
+button:disabled::after {
+  border-color: var(--cyan);
+}
+button:disabled:active {
+  transform: none;
+}
+@media (max-width: 600px) {
+  .level-pages {
+    gap: 10px;
+    font-size: 15px;
+  }
+  .level-pages select {
+    flex: 1;
+    min-width: 0;
+  }
+  .intro-note {
+    max-width: 100%;
+  }
+}
+
+.personal-best {
+  color: var(--cyan);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+  margin: -4px 0 12px;
 }

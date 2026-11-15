@@ -11,7 +11,7 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
   const board = game.board;
   const available = Math.floor(canvas.parentElement!.clientWidth);
   // Compact on phones, breathing room on desktop. Always scale by whole pixels.
-  const minimumWidth = board.width * TILE + 16;
+  const minimumWidth = board.width * TILE + 8;
   const desiredWidth =
     available <= 600
       ? Math.max(title ? 232 : 0, minimumWidth)
@@ -179,6 +179,6 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
     c.fillStyle = CYAN;
     c.fillText("WAREHOUSE SHIFT / EST. 1987", center, top + 61);
     c.fillStyle = WHITE;
-    c.fillText("10 ROOMS. ONE LITTLE HERO.", center, top + 76);
+    c.fillText("100 ROOMS. ONE LITTLE HERO.", center, top + 76);
   }
 }

@@ -2,6 +2,49 @@
 
 Ein kleines Lager voller Kopfarbeit: BOX//86 ist ein Sokoban-Spiel im Stil eines IBM-PC-Spiels von 1987. 100 kompakte Rätsel, eigene CGA-Pixelgrafik, kurze Animationen und zurückhaltender PC-Speaker-Sound. Ohne Werbung, Tracking, Konten oder Zeitdruck.
 
+**100 geprüfte Levels · CGA-Pixelgrafik · Tastatur & Touch · Unbegrenztes Undo**
+
+<p align="center">
+  <a href="docs/screenshots/desktop.png">
+    <img src="docs/screenshots/desktop.png" alt="BOX//86 auf dem Desktop: Raum 53 mit cyanfarbenen Ziegelwänden, magentafarbenen Kisten, Zielfeldern und Zug- sowie Schubzähler" width="960">
+  </a>
+</p>
+
+<details>
+<summary><strong>Mehr Screenshots: Titelmenü, Levelauswahl und Smartphone</strong></summary>
+
+### Willkommen zur Schicht
+
+Das Hauptmenü führt direkt zum Spiel, zum Raumverzeichnis oder zur kurzen Einweisung. Während einer Pause bleibt der laufende Versuch erhalten.
+
+<p align="center">
+  <a href="docs/screenshots/title.png">
+    <img src="docs/screenshots/title.png" alt="Retro-Titelmenü mit BOX//86-Logo und den Optionen Schicht beginnen, Raumverzeichnis und So wird geschoben" width="800">
+  </a>
+</p>
+
+### Alle Räume stehen offen
+
+Alle 100 Levels sind direkt anwählbar. Magenta markiert den aktuellen Raum, ein Häkchen einen abgeschlossenen Raum.
+
+<p align="center">
+  <a href="docs/screenshots/levels.png">
+    <img src="docs/screenshots/levels.png" alt="Levelauswahl in Zehnergruppen: Raum 1 ist ausgewählt und mit einem Häkchen als abgeschlossen markiert" width="800">
+  </a>
+</p>
+
+### Auch für unterwegs
+
+Auf dem Smartphone steuerst du per Wischgeste oder mit dem einblendbaren Steuerkreuz. Undo, Neustart, Pause und Mute bleiben direkt erreichbar.
+
+<p align="center">
+  <a href="docs/screenshots/mobile.png">
+    <img src="docs/screenshots/mobile.png" alt="BOX//86 im Smartphone-Hochformat mit Raum 8, Touch-Steuerkreuz sowie Buttons für Undo, Neustart, Pause und Ton" width="320">
+  </a>
+</p>
+
+</details>
+
 ## Start
 
 Node.js 20.19+ oder 22.12+ vorausgesetzt.
@@ -49,9 +92,9 @@ Die 90–120 ms kurzen Bewegungen, der Abschluss-Effekt und der Levelübergang s
 
 Bestwerte für Züge und Schübe sind **getrennte Minima**, möglicherweise aus verschiedenen Versuchen. Sie stehen im aktuellen Raum und im Tooltip seiner Kachel. **Ein Menüwechsel behält den laufenden Versuch samt Undo-Verlauf; ein Browser-Reload startet den zuletzt gewählten Raum neu.** Einstellungen, Abschlüsse und Bestwerte bleiben dabei erhalten.
 
-## Neue Sammlung und Fortschritt
+## Levels und Fortschritt
 
-Die alten zehn Testlevels sind vollständig ersetzt. `warehouse-100-v1` enthält stabile IDs `"1"` bis `"100"`. Die ersten 15 Räume sind gezielt gestaltet, die weiteren 85 aus 340 unabhängig geprüften Kandidaten ausgewählt. Kein fremdes Levelpaket wurde verwendet.
+Das Levelpaket `warehouse-100-v1` enthält genau 100 Räume mit stabilen IDs `"1"` bis `"100"`. Die ersten 15 Räume sind gezielt gestaltet, die weiteren 85 aus 340 unabhängig geprüften Kandidaten ausgewählt. Kein fremdes Levelpaket wurde verwendet.
 
 | Räume | Einordnung | Schuboptimum |
 | --- | --- | --- |
@@ -62,13 +105,13 @@ Die alten zehn Testlevels sind vollständig ersetzt. `warehouse-100-v1` enthält
 | 61–85 | Mittel bis knifflig | 10–15 |
 | 86–100 | Anspruchsvoller | 12–21 |
 
-Unter `box86.progress` speichert localStorage Schema 2 mit `levelPackId`, `lastLevel`, `completed` und allgemeinen `settings`. Ein Abschluss enthält `bestMoves` und `bestPushes`. Schlechtere Ergebnisse überschreiben keine Minima. Die Einstellungen `muted`, `scanlines` und `showControls` werden im selben Format ergänzt. Paketkennung, Level-IDs und bestehende Ergebnisse aus Ticket 2 bleiben unverändert. Laufende Versuche werden nicht dauerhaft gespeichert.
+Unter `box86.progress` speichert localStorage Schema 2 mit `levelPackId`, `lastLevel`, `completed` und allgemeinen `settings`. Ein Abschluss enthält `bestMoves` und `bestPushes`. Schlechtere Ergebnisse überschreiben keine Minima. Die Einstellungen `muted`, `scanlines` und `showControls` werden im selben Format ergänzt. Die Paketkennung verhindert, dass Ergebnisse eines anderen Levelpakets übernommen werden; allgemeine Einstellungen bleiben davon unabhängig. Laufende Versuche werden nicht dauerhaft gespeichert.
 
 Beim Wechsel vom alten Schema/Paket werden ausschließlich levelbezogene Ergebnisse zurückgesetzt. Allgemeine primitive Einstellungen bleiben erhalten, andere localStorage-Schlüssel werden nicht angefasst. Die Migration wird beim Start dauerhaft gespeichert. Fehlerhafte Einträge werden verworfen; blockierter Speicher verhindert das Spielen nicht. Beim späteren Austausch der Rätsel die Paketkennung ändern; IDs innerhalb eines veröffentlichten Pakets nicht neu zuordnen.
 
 ## Architektur und Levelformat
 
-`src/game.ts` enthält unverändert Parser und Spielregeln, `levels.json` die statischen Daten, `storage.ts` die Persistenz, `render.ts` die Pixelgrafik, `motion.ts` die Animation und Wischrichtung, `audio.ts` die synthetischen Klänge und `main.ts` die Bedienung. Entwicklungswerkzeuge liegen getrennt unter `tools/levels/`.
+`src/game.ts` enthält Parser und Spielregeln, `levels.json` die statischen Daten, `storage.ts` die Persistenz, `render.ts` die Pixelgrafik, `motion.ts` die Animation und Wischrichtung, `audio.ts` die synthetischen Klänge und `main.ts` die Bedienung. Entwicklungswerkzeuge liegen getrennt unter `tools/levels/`.
 
 Levels sind rechteckige ASCII-Karten mit geschlossenem Wandrand:
 

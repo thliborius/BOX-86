@@ -10,6 +10,7 @@ import {
   strategySimilarity,
 } from "./duplicates";
 import { verify } from "./verify";
+import { tutorials } from "./tutorial";
 
 export function validatePack(levels: Level[], limits?: Limits) {
   const errors: string[] = [],
@@ -48,7 +49,13 @@ export function validatePack(levels: Level[], limits?: Limits) {
       if (result.status !== "solved")
         throw Error(`Solver ${result.status} after ${result.states} states`);
       const replay = verify(l.map, result.solution, result.pushes);
-      if (!isInteresting(l.map, result, index < 15))
+      if (
+        !isInteresting(
+          l.map,
+          result,
+          tutorials.some((t) => t.map === l.map),
+        )
+      )
         throw Error("Trivial solution heuristic failed");
       return {
         id: l.id,
@@ -79,7 +86,8 @@ export function validatePack(levels: Level[], limits?: Limits) {
   const nearPairs: { a: string; b: string; overlap: number }[] = [];
   for (let i = 0; i < levels.length; i++)
     for (let j = i + 1; j < levels.length; j++) {
-      if (rows[i].status !== "validated" || rows[j].status !== "validated") continue;
+      if (rows[i].status !== "validated" || rows[j].status !== "validated")
+        continue;
       const overlap = geometrySimilarity(levels[i].map, levels[j].map);
       if (overlap > 0.9)
         nearPairs.push({

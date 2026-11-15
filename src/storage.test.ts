@@ -107,6 +107,23 @@ describe("pack progress", () => {
     save(store, p);
     expect(load(store)).toEqual(p);
   });
+  it("resets v1 pack test progress while preserving sound and CRT settings", () => {
+    const old = {
+      ...empty(),
+      levelPackId: "warehouse-100-v1",
+      lastLevel: "15",
+      completed: { "14": { bestMoves: 24, bestPushes: 9 } },
+      settings: { muted: true, scanlines: true, showControls: false },
+    };
+    const store = memory(JSON.stringify(old));
+    const updated = load(store);
+    expect(updated.levelPackId).toBe("warehouse-100-v2");
+    expect(updated.lastLevel).toBe("1");
+    expect(updated.completed).toEqual({});
+    expect(updated.settings).toEqual(old.settings);
+    save(store, updated);
+    expect(load(store)).toEqual(updated);
+  });
   it("survives unavailable and full storage", () => {
     expect(
       load({

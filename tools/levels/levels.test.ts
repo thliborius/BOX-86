@@ -14,6 +14,9 @@ import { tutorials } from "./tutorial";
 import { candidate, serialize } from "./generator";
 import { canonical, strategySignature, strategySimilarity } from "./duplicates";
 import { validatePack } from "./validate";
+import { buildCollection, orderCollection, type Selection } from "./collection";
+import previousOrder from "./fixtures/order-v1.json";
+import selection from "../../data/level-selection.json";
 
 // Small reference search deliberately uses individual engine moves, without solver pruning.
 function referencePushes(map: string) {
@@ -143,6 +146,28 @@ it("normalizes related solution motifs but distinguishes crate order", () => {
   expect(strategySimilarity("0U-0R-0D", "0U-1R-2D")).toBeLessThan(1);
 });
 describe("final collection", () => {
+  it("moves only the two requested levels to final positions 20 and 24", () => {
+    expect(previousOrder[13]).toBe("Drei Plätze");
+    expect(previousOrder[14]).toBe("Ende der Frühschicht");
+    const moved = new Set(["Drei Plätze", "Ende der Frühschicht"]);
+    const expected = previousOrder.filter((name) => !moved.has(name));
+    expected.splice(19, 0, "Drei Plätze");
+    expected.splice(23, 0, "Ende der Frühschicht");
+    expect(levels.map((l) => l.name)).toEqual(expected);
+    expect(selection.map((l) => l.name)).toEqual(expected);
+    expect(levels.map((l) => l.id)).toEqual(
+      Array.from({ length: 100 }, (_, i) => String(i + 1)),
+    );
+    const input = previousOrder.map((name) => ({ name }));
+    const ordered = orderCollection(input);
+    expect(ordered.map((l) => l.name)).toEqual(expected);
+    expect(orderCollection(ordered)).toEqual(ordered);
+    expect(input.map((l) => l.name)).toEqual(previousOrder);
+  });
+  it("reproduces every frozen level from the updated selection", () => {
+    expect(buildCollection(selection as Selection[])).toEqual(levels);
+  }, 120000);
+
   it("validates all 100 levels, optimal solutions and independent replays", () => {
     const report = validatePack(levels);
     expect(report.errors).toEqual([]);
@@ -164,7 +189,11 @@ describe("final collection", () => {
       { ...levels[0], id: "3" },
       { id: "4", name: "done", map: "#####\n#@* #\n#   #\n#   #\n#####" },
       { id: "5", name: "missing map", map: undefined as unknown as string },
-      { id: "6", name: "isolated", map: "#######\n#@$.# #\n##### #\n#     #\n#######" },
+      {
+        id: "6",
+        name: "isolated",
+        map: "#######\n#@$.# #\n##### #\n#     #\n#######",
+      },
     ];
     const r = validatePack(bad);
     expect(r.errors.length).toBeGreaterThan(3);

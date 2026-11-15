@@ -94,7 +94,7 @@ Bestwerte für Züge und Schübe sind **getrennte Minima**, möglicherweise aus 
 
 ## Levels und Fortschritt
 
-Das Levelpaket `warehouse-100-v1` enthält genau 100 Räume mit stabilen IDs `"1"` bis `"100"`. Die ersten 15 Räume sind gezielt gestaltet, die weiteren 85 aus 340 unabhängig geprüften Kandidaten ausgewählt. Kein fremdes Levelpaket wurde verwendet.
+Das Levelpaket `warehouse-100-v2` enthält genau 100 Räume mit stabilen IDs `"1"` bis `"100"`. 15 Räume sind gezielt gestaltet (1–13, 20 und 24), die übrigen 85 aus 340 unabhängig geprüften Kandidaten ausgewählt. Kein fremdes Levelpaket wurde verwendet.
 
 | Räume | Einordnung | Schuboptimum |
 | --- | --- | --- |

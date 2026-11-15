@@ -1,5 +1,5 @@
 {
-  "levelPackId": "warehouse-100-v1",
+  "levelPackId": "warehouse-100-v2",
   "solver": "A* / minimum assignment / reachable-player-region",
   "limits": {
     "maxStates": 150000,
@@ -29,7 +29,7 @@
         "last": 15,
         "label": "Einfach",
         "count": 10,
-        "meanScore": 27.2,
+        "meanScore": 25.8,
         "minPushes": 5,
         "maxPushes": 9
       },
@@ -38,7 +38,7 @@
         "last": 30,
         "label": "Leicht bis mittel",
         "count": 15,
-        "meanScore": 41.4,
+        "meanScore": 42.4,
         "minPushes": 8,
         "maxPushes": 12
       },
@@ -402,56 +402,6 @@
     },
     {
       "id": "14",
-      "name": "Drei Plätze",
-      "width": 8,
-      "height": 7,
-      "boxes": 3,
-      "minimumPushes": 9,
-      "pushOptimal": true,
-      "solutionMoves": 32,
-      "moveOptimal": false,
-      "states": 42,
-      "score": 40.7,
-      "detourPushes": 0,
-      "turns": 4,
-      "switches": 5,
-      "repositionings": 6,
-      "goalWithdrawals": 1,
-      "bottlenecks": 1,
-      "deadlockRatio": 0.286,
-      "averageAlternatives": 7.44,
-      "pushPattern": "0U-1U-1R-2U-1R-2U-0U",
-      "floorCells": 28,
-      "solution": "LLUDRUUDLLUURRDDDRULUURRDDLUDLLU",
-      "status": "validated"
-    },
-    {
-      "id": "15",
-      "name": "Ende der Frühschicht",
-      "width": 8,
-      "height": 7,
-      "boxes": 3,
-      "minimumPushes": 9,
-      "pushOptimal": true,
-      "solutionMoves": 45,
-      "moveOptimal": false,
-      "states": 27,
-      "score": 42.3,
-      "detourPushes": 0,
-      "turns": 4,
-      "switches": 7,
-      "repositionings": 7,
-      "goalWithdrawals": 1,
-      "bottlenecks": 0,
-      "deadlockRatio": 0.345,
-      "averageAlternatives": 5.44,
-      "pushPattern": "0U-2U-1R-2R-1U-2R-0U-1U",
-      "floorCells": 29,
-      "solution": "LUDRRUUDDLLURLLUURRRDRDDLULLLUURRRRDDLLLUDRRU",
-      "status": "validated"
-    },
-    {
-      "id": "16",
       "name": "Schmale Gasse",
       "width": 8,
       "height": 8,
@@ -476,7 +426,7 @@
       "status": "validated"
     },
     {
-      "id": "17",
+      "id": "15",
       "name": "Nebenraum",
       "width": 9,
       "height": 6,
@@ -501,7 +451,7 @@
       "status": "validated"
     },
     {
-      "id": "18",
+      "id": "16",
       "name": "Lagerwinkel",
       "width": 9,
       "height": 8,
@@ -526,7 +476,7 @@
       "status": "validated"
     },
     {
-      "id": "19",
+      "id": "17",
       "name": "Doppelbogen",
       "width": 8,
       "height": 7,
@@ -551,7 +501,7 @@
       "status": "validated"
     },
     {
-      "id": "20",
+      "id": "18",
       "name": "Erster Umweg",
       "width": 8,
       "height": 6,
@@ -576,7 +526,7 @@
       "status": "validated"
     },
     {
-      "id": "21",
+      "id": "19",
       "name": "Am Pfeiler",
       "width": 8,
       "height": 8,
@@ -601,7 +551,32 @@
       "status": "validated"
     },
     {
-      "id": "22",
+      "id": "20",
+      "name": "Drei Plätze",
+      "width": 8,
+      "height": 7,
+      "boxes": 3,
+      "minimumPushes": 9,
+      "pushOptimal": true,
+      "solutionMoves": 32,
+      "moveOptimal": false,
+      "states": 42,
+      "score": 40.7,
+      "detourPushes": 0,
+      "turns": 4,
+      "switches": 5,
+      "repositionings": 6,
+      "goalWithdrawals": 1,
+      "bottlenecks": 1,
+      "deadlockRatio": 0.286,
+      "averageAlternatives": 7.44,
+      "pushPattern": "0U-1U-1R-2U-1R-2U-0U",
+      "floorCells": 28,
+      "solution": "LLUDRUUDLLUURRDDDRULUURRDDLUDLLU",
+      "status": "validated"
+    },
+    {
+      "id": "21",
       "name": "Zwischen den Toren",
       "width": 8,
       "height": 8,
@@ -626,7 +601,7 @@
       "status": "validated"
     },
     {
-      "id": "23",
+      "id": "22",
       "name": "Linke Bucht",
       "width": 8,
       "height": 7,
@@ -651,7 +626,7 @@
       "status": "validated"
     },
     {
-      "id": "24",
+      "id": "23",
       "name": "Kleine Kreuzung",
       "width": 9,
       "height": 6,
@@ -673,6 +648,31 @@
       "pushPattern": "0U-1L-0D-0L-1D-0L-0D",
       "floorCells": 25,
       "solution": "LUDRRULLLUURDRDLULLDURRDLLULD",
+      "status": "validated"
+    },
+    {
+      "id": "24",
+      "name": "Ende der Frühschicht",
+      "width": 8,
+      "height": 7,
+      "boxes": 3,
+      "minimumPushes": 9,
+      "pushOptimal": true,
+      "solutionMoves": 45,
+      "moveOptimal": false,
+      "states": 27,
+      "score": 42.3,
+      "detourPushes": 0,
+      "turns": 4,
+      "switches": 7,
+      "repositionings": 7,
+      "goalWithdrawals": 1,
+      "bottlenecks": 0,
+      "deadlockRatio": 0.345,
+      "averageAlternatives": 5.44,
+      "pushPattern": "0U-2U-1R-2R-1U-2R-0U-1U",
+      "floorCells": 29,
+      "solution": "LUDRRUUDDLLURLLUURRRDRDDLULLLUURRRRDDLLLUDRRU",
       "status": "validated"
     },
     {

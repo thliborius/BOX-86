@@ -1,15 +1,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { parse, type Level } from "../../src/game";
-import { candidate } from "./generator";
+import { parse } from "../../src/game";
 import { tutorials } from "./tutorial";
 import { solve } from "./solver";
 import { analyze, type Solved } from "./quality";
 import { canonical, geometrySimilarity } from "./duplicates";
-import { verify } from "./verify";
+import { buildCollection, orderCollection, type Selection } from "./collection";
 
-type Selection =
-  | { kind: "handcrafted"; name: string }
-  | { kind: "generated"; name: string; seed: number; boxes: number };
 type Candidate = {
   seed: number;
   boxes: number;
@@ -199,25 +195,13 @@ if (process.argv.includes("--select")) {
     throw Error("Selection count");
   writeFileSync(
     "data/level-selection.json",
-    JSON.stringify(selection, null, 2) + "\n",
+    JSON.stringify(orderCollection(selection), null, 2) + "\n",
   );
 }
 const selection = JSON.parse(
   readFileSync("data/level-selection.json", "utf8"),
 ) as Selection[];
-const levels: Level[] = selection.map((s, i) => {
-  const map =
-    s.kind === "handcrafted"
-      ? tutorials.find((t) => t.name === s.name)?.map
-      : candidate(s.seed, s.boxes)?.map;
-  if (!map) throw Error(`Cannot recreate ${s.name}`);
-  const r = solve(parse(map));
-  if (r.status !== "solved")
-    throw Error(`Unverified generated level ${s.name}: ${r.status}`);
-  verify(map, r.solution, r.pushes);
-  return { id: String(i + 1), name: s.name, map };
-});
-if (levels.length !== 100) throw Error("Expected 100 levels");
+const levels = buildCollection(selection);
 writeFileSync("src/levels.json", JSON.stringify(levels, null, 2) + "\n");
 console.log(
   `Rebuilt ${levels.length} frozen levels from authored maps and selected seeds; independently replayed every solution.`,

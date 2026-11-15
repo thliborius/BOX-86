@@ -52,14 +52,6 @@
     "name": "Ziel im Winkel"
   },
   {
-    "kind": "handcrafted",
-    "name": "Drei Plätze"
-  },
-  {
-    "kind": "handcrafted",
-    "name": "Ende der Frühschicht"
-  },
-  {
     "kind": "generated",
     "name": "Schmale Gasse",
     "seed": 876872,
@@ -96,6 +88,10 @@
     "boxes": 3
   },
   {
+    "kind": "handcrafted",
+    "name": "Drei Plätze"
+  },
+  {
     "kind": "generated",
     "name": "Zwischen den Toren",
     "seed": 872428,
@@ -112,6 +108,10 @@
     "name": "Kleine Kreuzung",
     "seed": 870856,
     "boxes": 2
+  },
+  {
+    "kind": "handcrafted",
+    "name": "Ende der Frühschicht"
   },
   {
     "kind": "generated",

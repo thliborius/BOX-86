@@ -2,9 +2,9 @@
 
 ## Inhalt und redaktionelle Auswahl
 
-`warehouse-100-v1` ist eine neue, selbst erstellte Sammlung. Keine Geometrie der alten zehn Testlevels wird als Bestand weitergeführt. Die endgültigen 100 Karten stehen in `src/levels.json`, ohne Zufall oder Suchlogik zur Laufzeit.
+`warehouse-100-v2` ist eine neue, selbst erstellte Sammlung. Keine Geometrie der alten zehn Testlevels wird als Bestand weitergeführt. Die endgültigen 100 Karten stehen in `src/levels.json`, ohne Zufall oder Suchlogik zur Laufzeit.
 
-15 Einführungsräume werden in `tools/levels/tutorial.ts` gezielt als ASCII-Karten gepflegt, mit Notizen zum beabsichtigten Lernschritt. Sie führen über Schubseitenwechsel und Umwege um Säulen zu zwei und drei miteinander zu rangierenden Kisten. Schon die ersten Räume benötigen Richtungswechsel; das fünfte Rätsel hat zwei Kisten. Der Generator ersetzt dieses Einführungsdesign nicht.
+15 handgestaltete Räume (1–13, 20 und 24) werden in `tools/levels/tutorial.ts` gezielt als ASCII-Karten gepflegt, mit Notizen zum beabsichtigten Lernschritt. Sie führen über Schubseitenwechsel und Umwege um Säulen zu zwei und drei miteinander zu rangierenden Kisten. Schon die ersten Räume benötigen Richtungswechsel; das fünfte Rätsel hat zwei Kisten. Der Generator ersetzt dieses Einführungsdesign nicht.
 
 Für weitere Räume wurden 8.826 Seeds untersucht: 340 Kandidaten bestanden die Vorauswahl, davon 140 mit nachweislichem Schubumweg. Zwei nicht abgeschlossene Suchläufe wurden verworfen. Die Zusammenfassung steht in `data/generation-summary.json`; die nicht ausgelieferte Kandidatenliste unter `tmp/` lässt sich mit `levels:search` neu erzeugen.
 
@@ -18,6 +18,8 @@ Für weitere Räume wurden 8.826 Seeds untersucht: 340 Kandidaten bestanden die 
 - Säulen, Buchten, verbundene Räume, versetzte Flügel und Inseln werden bei der Auswahl gemischt. Die Metriken werden durch Sichtprüfung kleiner, mittlerer und später Räume ergänzt.
 
 Der Schwierigkeitsmittelwert steigt über die sechs Gruppen. Einzelne Übergänge können leichter ausfallen; menschliche Schwierigkeit ist nicht streng sortierbar. Die Auswahl ist unter Namen und Seeds fixiert. `levels:generate` reproduziert genau diese Auswahl und überprüft dabei wieder jede Lösung. `--select` ist eine bewusste Neuauswahl, keine Routine für einen normalen Build. Ein veröffentlichtes Rätselpaket nachträglich zu verändern erfordert eine neue Paketkennung.
+
+Die Reihenfolge in Paket v2 verschiebt „Drei Plätze“ auf Position 20 und „Ende der Frühschicht“ auf Position 24. Alle übrigen Räume behalten ihre relative Reihenfolge; Karten und Lösungen bleiben unverändert. Die Positionsregel gilt auch nach einer bewussten Neuauswahl und ist idempotent. Die erhöhte Paketkennung verwirft lokale Testbestwerte, erhält aber Einstellungen wie Ton und Scanlines.
 
 ## Deterministischer Generator
 

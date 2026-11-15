@@ -50,4 +50,6 @@ npm run build
 
 14 Tests prüfen Regeln, Undo, Neustart, Parsing und Speicherfehler. Eine Breitensuche durch erreichbare Spielzustände weist die Lösbarkeit aller zehn Räume nach. Die kleinen Einführungsräume steigern Kistenanzahl und Rangierbedarf; eine subjektive Schwierigkeitseinstufung ersetzt das nicht.
 
-Das Canvas verwendet 320×200 Pixel und deaktivierte Kantenglättung. Die Darstellung passt sich dem Fenster an; bei nicht ganzzahligen Skalierungsfaktoren können Pixel unterschiedlich breit erscheinen. Keine Animationen, kein Generator, keine zusätzlichen Spielmodi.
+Die Pixelgrafik orientiert sich an der ursprünglichen 320×200-Gestaltung. Das Canvas passt seine virtuelle Fläche an Raum und Fensterbreite an und skaliert die 16×16-Sprites ausschließlich um ganze Faktoren, ohne Kantenglättung. So bleiben Pixel gleich groß und Räume vollständig sichtbar. Sehr schmale Fenster verwenden eine kleinere Vergrößerung.
+
+Die lokale Schrift `src/assets/box86-pixel.ttf` ist eigens aus Pixelmustern gestaltet. Ihr Quelltext liegt in `scripts/build-font.py`; zum optionalen Neugenerieren wird Python mit `fonttools` benötigt. Installation, Spiel und Produktions-Build benötigen dieses Werkzeug nicht. Im Seitenfuß lassen sich dezente CRT-Scanlines einschalten; diese Einstellung gilt nur für die aktuelle Seite und verändert den Spielstand nicht. Keine Animationen, kein Generator, keine zusätzlichen Spielmodi.

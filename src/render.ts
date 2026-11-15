@@ -1,4 +1,4 @@
-import type { Game } from "./game";
+import type { Game, State } from "./game";
 
 const CYAN = "#55ffff";
 const MAGENTA = "#ff55ff";
@@ -6,8 +6,20 @@ const WHITE = "#ffffff";
 const BLACK = "#000000";
 const TILE = 16;
 
+export interface RenderFrame {
+  previous?: State;
+  progress?: number;
+  celebration?: number;
+  transition?: number;
+}
+
 /** Integer coordinates and a four-color palette throughout the artwork. */
-export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
+export function render(
+  canvas: HTMLCanvasElement,
+  game: Game,
+  title: boolean,
+  frame: RenderFrame = {},
+) {
   const board = game.board;
   const available = Math.floor(canvas.parentElement!.clientWidth);
   // Compact on phones, breathing room on desktop. Always scale by whole pixels.
@@ -15,10 +27,28 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
   const desiredWidth =
     available <= 600
       ? Math.max(title ? 232 : 0, minimumWidth)
-      : Math.max(256, minimumWidth);
-  const scale = Math.max(1, Math.floor(available / desiredWidth));
+      : Math.max(title ? 320 : 256, minimumWidth);
+  const landscape =
+    window.matchMedia("(orientation: landscape) and (max-height: 600px)")
+      .matches && !title;
+  const height = title
+    ? 112
+    : Math.max(
+        landscape ? 80 : 112,
+        board.height * TILE + (landscape ? 8 : 24),
+      );
+  const heightBudget = Math.max(
+    height,
+    window.innerHeight - (landscape ? 148 : 340),
+  );
+  const scale = Math.max(
+    1,
+    Math.min(
+      Math.floor(available / desiredWidth),
+      Math.floor(heightBudget / height),
+    ),
+  );
   const width = Math.max(minimumWidth, Math.floor(available / scale));
-  const height = Math.max(title ? 136 : 112, board.height * TILE + 24);
   canvas.width = width;
   canvas.height = height;
   canvas.style.width = `${width * scale}px`;
@@ -62,6 +92,31 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
   const ox = Math.floor((width - board.width * TILE) / 2);
   const oy = Math.floor((height - board.height * TILE) / 2) - 2;
   rect(0, 0, width, height, BLACK);
+
+  if (title) {
+    rect(10, 16, width - 20, 1, CYAN);
+    rect(10, height - 16, width - 20, 1, CYAN);
+    dither(10, 18, width - 20, 3, CYAN, true);
+    dither(10, height - 20, width - 20, 3, MAGENTA, true);
+    const center = Math.floor(width / 2);
+    const left = Math.floor((width - 216) / 2);
+    const top = Math.floor((height - 86) / 2);
+    rect(left - 3, top - 3, 222, 92, BLACK);
+    outline(left, top, 216, 86, CYAN);
+    dither(left + 3, top + 3, 210, 4, MAGENTA, true);
+    c.textAlign = "center";
+    c.font = '40px "BOX86 Pixel", monospace';
+    c.fillStyle = MAGENTA;
+    c.fillText("BOX//86", center + 1, top + 43);
+    c.fillStyle = WHITE;
+    c.fillText("BOX//86", center, top + 42);
+    c.font = '10px "BOX86 Pixel", monospace';
+    c.fillStyle = CYAN;
+    c.fillText("WAREHOUSE SHIFT / EST. 1987", center, top + 61);
+    c.fillStyle = WHITE;
+    c.fillText("100 ROOMS. ONE LITTLE HERO.", center, top + 76);
+    return;
+  }
 
   // Stippled shadows sit behind walls and actors.
   for (const p of board.walls) {
@@ -108,10 +163,28 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
       }
     }
   }
-  for (const p of game.state.boxes) {
-    const X = ox + (p % board.width) * TILE;
-    const Y = oy + Math.floor(p / board.width) * TILE;
-    const placed = board.goals.has(p);
+  const progress = frame.progress ?? 1;
+  const position = (p: number, previous = p) => ({
+    x:
+      ox +
+      Math.round(
+        ((previous % board.width) +
+          ((p % board.width) - (previous % board.width)) * progress) *
+          TILE,
+      ),
+    y:
+      oy +
+      Math.round(
+        (Math.floor(previous / board.width) +
+          (Math.floor(p / board.width) - Math.floor(previous / board.width)) *
+            progress) *
+          TILE,
+      ),
+  });
+  for (const [index, p] of game.state.boxes.entries()) {
+    const previous = frame.previous?.boxes[index] ?? p;
+    const { x: X, y: Y } = position(p, previous);
+    const placed = board.goals.has(p) && (previous === p || progress === 1);
     const color = placed ? CYAN : MAGENTA;
     rect(X + 1, Y + 1, 14, 14, BLACK);
     dither(X + 3, Y + 15, 12, 2, color);
@@ -142,8 +215,14 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
     }
   }
 
-  const X = ox + (game.state.player % board.width) * TILE;
-  const Y = oy + Math.floor(game.state.player / board.width) * TILE;
+  const player = position(game.state.player, frame.previous?.player);
+  const X = player.x;
+  const walking =
+    frame.previous &&
+    frame.previous.player !== game.state.player &&
+    progress > 0.2 &&
+    progress < 0.8;
+  const Y = player.y - (walking ? 1 : 0);
   rect(X + 3, Y + 15, 11, 1, BLACK);
   dither(X + 4, Y + 16, 9, 1, CYAN);
   rect(X + 5, Y + 1, 7, 3, MAGENTA); // Cap and brim.
@@ -162,23 +241,30 @@ export function render(canvas: HTMLCanvasElement, game: Game, title: boolean) {
   rect(X + 4, Y + 14, 3, 2, WHITE);
   rect(X + 10, Y + 14, 3, 2, WHITE);
 
-  if (title) {
-    const center = Math.floor(width / 2);
-    const left = Math.floor((width - 216) / 2);
-    const top = Math.floor((height - 86) / 2);
-    rect(left - 3, top - 3, 222, 92, BLACK);
-    outline(left, top, 216, 86, CYAN);
-    dither(left + 3, top + 3, 210, 4, MAGENTA, true);
-    c.textAlign = "center";
-    c.font = '40px "BOX86 Pixel", monospace';
-    c.fillStyle = MAGENTA;
-    c.fillText("BOX//86", center + 1, top + 43);
-    c.fillStyle = WHITE;
-    c.fillText("BOX//86", center, top + 42);
-    c.font = '10px "BOX86 Pixel", monospace';
-    c.fillStyle = CYAN;
-    c.fillText("WAREHOUSE SHIFT / EST. 1987", center, top + 61);
-    c.fillStyle = WHITE;
-    c.fillText("100 ROOMS. ONE LITTLE HERO.", center, top + 76);
+  if (frame.celebration !== undefined) {
+    const distance = Math.round(frame.celebration * 8);
+    for (const goal of board.goals) {
+      const point = position(goal);
+      for (const [dx, dy] of [
+        [-1, -1],
+        [1, -1],
+        [-1, 1],
+        [1, 1],
+      ]) {
+        rect(
+          point.x + 7 + dx * (8 + distance),
+          point.y + 7 + dy * (8 + distance),
+          1,
+          2,
+          frame.celebration < 0.5 ? WHITE : CYAN,
+        );
+      }
+    }
+  }
+  if (frame.transition !== undefined && frame.transition < 1) {
+    const edge = Math.floor(height * frame.transition);
+    rect(0, edge, width, height - edge, BLACK);
+    dither(0, edge, width, 2, CYAN);
+    if (edge + 3 < height) dither(0, edge + 3, width, 1, MAGENTA, true);
   }
 }

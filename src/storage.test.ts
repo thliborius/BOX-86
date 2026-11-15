@@ -98,6 +98,15 @@ describe("pack progress", () => {
     expect(() => recordWin(empty(), "101", 2, 1)).toThrow();
     expect(() => recordWin(empty(), "1", 2, 3)).toThrow();
   });
+  it("retains the existing release pack, results and new preferences without migration", () => {
+    const p = empty();
+    p.lastLevel = "53";
+    recordWin(p, "1", 7, 3);
+    p.settings = { scanlines: true, muted: true, showControls: false };
+    const store = memory();
+    save(store, p);
+    expect(load(store)).toEqual(p);
+  });
   it("survives unavailable and full storage", () => {
     expect(
       load({

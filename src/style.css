@@ -721,3 +721,403 @@ button:disabled:active {
   text-align: center;
   margin: -4px 0 12px;
 }
+
+/* Release interface: a quiet title terminal and a focused play surface. */
+[hidden] {
+  display: none !important;
+}
+button,
+.crt-option,
+.wordmark {
+  touch-action: manipulation;
+}
+canvas {
+  user-select: none;
+  -webkit-user-select: none;
+}
+#app[data-screen="playing"] canvas {
+  touch-action: none;
+}
+canvas:focus {
+  outline: none;
+}
+canvas:focus-visible {
+  outline: 1px dashed var(--cyan);
+  outline-offset: -2px;
+}
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-controls button {
+  font-size: 15px;
+  padding: 8px 12px 10px;
+  min-height: 38px;
+  white-space: nowrap;
+}
+.header-controls #mute[aria-pressed="true"] {
+  --edge: var(--magenta);
+}
+.menu-screen {
+  text-align: center;
+  padding: 0 20px 24px;
+}
+.menu-kicker {
+  margin: 0 0 12px;
+  color: var(--magenta);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.menu-screen h2 {
+  font-size: 20px;
+  line-height: 1.5;
+}
+#menu-room {
+  color: var(--cyan);
+  font-size: 15px;
+  margin: 8px 0 20px;
+}
+.menu-buttons {
+  display: grid;
+  gap: 10px;
+  max-width: 370px;
+  margin: auto;
+}
+.menu-buttons button {
+  min-height: 46px;
+}
+.menu-summary {
+  color: var(--cyan);
+  font-size: 20px;
+  margin: 24px 0 6px;
+}
+.menu-footnote {
+  color: var(--magenta);
+  font-size: 10px;
+  margin: 0;
+}
+#app[data-screen="menu"] .viewport {
+  margin-top: 8px;
+}
+#app[data-screen="playing"] .intro {
+  display: none;
+}
+#app[data-screen="playing"] main {
+  padding-top: 20px;
+}
+#app[data-screen="playing"][data-won="true"] .message {
+  color: var(--white);
+}
+#app[data-busy="true"] .viewport {
+  cursor: wait;
+}
+.toolbar {
+  align-items: stretch;
+}
+button:disabled {
+  cursor: default;
+}
+button:disabled::before {
+  background: var(--dots);
+}
+button:disabled:hover {
+  color: var(--cyan);
+}
+button:disabled::after {
+  border-color: var(--cyan);
+}
+.touch-controls {
+  text-align: center;
+  padding-top: 18px;
+}
+.touch-controls .directions {
+  touch-action: none;
+  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(3, 48px);
+  gap: 8px;
+  margin: 0;
+}
+.touch-controls .directions button {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  padding: 8px;
+}
+.touch-controls button[data-dir="0,-1"] {
+  grid-column: 2;
+}
+.touch-controls button[data-dir="-1,0"] {
+  grid-row: 2;
+  grid-column: 1;
+}
+.touch-controls button[data-dir="0,1"] {
+  grid-row: 2;
+  grid-column: 2;
+}
+.touch-controls button[data-dir="1,0"] {
+  grid-row: 2;
+  grid-column: 3;
+}
+.touch-controls p {
+  color: var(--cyan);
+  font-size: 10px;
+  margin: 12px 0 0;
+}
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  margin-top: 24px;
+  color: var(--cyan);
+  font-size: 15px;
+}
+#motion-note {
+  color: var(--magenta);
+  font-size: 10px;
+}
+.storage-note {
+  color: var(--magenta);
+  text-align: center;
+  font-size: 15px;
+}
+.catalog,
+.help-screen {
+  border-top: 2px solid var(--cyan);
+  padding: 20px 4px;
+}
+.catalog .section-label {
+  margin-top: 0;
+}
+.catalog-hint {
+  font-size: 15px;
+  color: var(--cyan);
+  margin: 0 0 20px;
+}
+.back-button {
+  margin-top: 24px;
+}
+.help-screen {
+  max-width: 700px;
+  margin: auto;
+}
+.help-screen h2 {
+  font-size: 30px;
+  line-height: 1.3;
+}
+.help-screen p {
+  color: var(--cyan);
+  font-size: 20px;
+  line-height: 1.5;
+}
+.key-guide {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 28px;
+  font-size: 20px;
+  margin: 24px 0;
+}
+.key-guide dt {
+  color: var(--magenta);
+}
+.key-guide dd {
+  margin: 0;
+  color: var(--white);
+}
+.wordmark:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 5px;
+}
+@media (max-width: 800px) {
+  .header-controls {
+    gap: 8px;
+  }
+  .header-controls button {
+    font-size: 10px;
+    min-height: 36px;
+  }
+  #app[data-screen="playing"] .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #app[data-screen="playing"] .toolbar button {
+    flex: 1;
+    min-width: 110px;
+    font-size: 15px;
+    padding: 10px 8px 12px;
+  }
+  .help-screen p {
+    font-size: 15px;
+  }
+  .key-guide {
+    font-size: 15px;
+    gap: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .masthead {
+    gap: 8px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .wordmark {
+    font-size: 30px;
+  }
+  .header-controls button {
+    padding: 8px 9px 10px;
+  }
+  .menu-screen {
+    padding: 0 12px 20px;
+  }
+  .menu-kicker {
+    font-size: 10px;
+  }
+  .menu-screen h2 {
+    font-size: 15px;
+  }
+  .menu-buttons button {
+    font-size: 15px;
+  }
+  .menu-summary {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  #menu-room {
+    font-size: 15px;
+  }
+  #app[data-screen="playing"] main {
+    padding-top: 12px;
+  }
+  #app[data-screen="playing"] .message {
+    padding: 8px 4px;
+    min-height: 36px;
+  }
+  #app[data-screen="playing"] .options {
+    margin-top: 12px;
+    gap: 8px 16px;
+  }
+  #app[data-screen="playing"] .toolbar #select,
+  #app[data-screen="playing"] .toolbar #next {
+    flex-basis: 100%;
+  }
+  .personal-best {
+    font-size: 10px;
+    margin: 0 0 10px;
+  }
+  .options {
+    column-gap: 16px;
+  }
+  footer {
+    margin-top: 16px;
+  }
+  .footer-note {
+    display: none;
+  }
+  .catalog .section-label {
+    font-size: 15px;
+  }
+  .help-screen h2 {
+    font-size: 20px;
+  }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .masthead {
+    min-height: 42px;
+    height: 42px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .wordmark {
+    font-size: 30px;
+  }
+  .system-name {
+    display: none;
+  }
+  .header-controls button {
+    min-height: 32px;
+    padding: 6px 12px 8px;
+    font-size: 10px;
+  }
+  #app[data-screen="playing"] main {
+    width: 100%;
+    max-width: 1100px;
+    padding: 8px 12px;
+  }
+  #app[data-screen="playing"] .play-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 164px;
+    align-items: center;
+    gap: 20px;
+  }
+  #app[data-screen="playing"] .play-layout:has(.touch-controls[hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #app[data-screen="playing"] .status {
+    min-height: 32px;
+    font-size: 15px;
+  }
+  #app[data-screen="playing"] .console-bottom {
+    padding-bottom: 8px;
+    border-top-width: 1px;
+  }
+  #app[data-screen="playing"] .toolbar {
+    padding-top: 6px;
+    gap: 8px;
+  }
+  #app[data-screen="playing"] .toolbar button {
+    min-height: 36px;
+    padding: 8px 6px;
+    font-size: 12px;
+    min-width: 90px;
+  }
+  #app[data-screen="playing"] .toolbar #select,
+  #app[data-screen="playing"] .toolbar #next {
+    flex-basis: auto;
+  }
+  #app[data-screen="playing"][data-won="false"] .message,
+  #app[data-screen="playing"] .personal-best {
+    display: none;
+  }
+  #app[data-screen="playing"] .options {
+    justify-content: flex-start;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  #app[data-screen="playing"] .options label {
+    min-height: 30px;
+  }
+  #app[data-screen="playing"] footer {
+    display: none;
+  }
+  .touch-controls {
+    padding: 0;
+  }
+  .touch-controls p {
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  /* All preferences remain available in the pause menu; give the board this space. */
+  #app[data-screen="playing"] .options {
+    display: none;
+  }
+}
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 600px) {
+  #app[data-screen="playing"] .toolbar button {
+    font-size: 10px;
+  }
+}
